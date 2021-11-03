@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% block contents %}
+
+<form>
+    <div class="form-group">
+    <label>product Name</label>
+    <input type="text" name='pname' class="form-control">
+    <label>product rate</label>
+    <input type="number" name='prate' class="form-control">
+    <label>product category</label>
+    <select class="form-control" name="productcat">
+        <option value="1">1</option>
+        <option value="2">2</option>
+    </select>
+    
+    <label>product Details</label>
+   <textarea class="form-control">
+
+   </textarea>
+   <label>product stock</label>
+    <input type="number" name='pstock' class="form-control">
+   <button type="button" class="btn btn-primary" style="float:right;">submit</button>
+  
+    </div>
+</form>
+{% endblock %}
