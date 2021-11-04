@@ -5,18 +5,28 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">PRODUCT NAME</th>
+        <th scope="col">PRODUCT DETAILS</th>
+        <th scope="col">PRODUCT RATE</th>
+        <th scope="col">PRODUCT CATEGORY</th>
+        <th scope="col">PRODUCT STOCK</th>
+        <th scope="col">DELETE</th>
+        <th scope="col">EDIT</th>
       </tr>
     </thead>
     <tbody>
+        {% for p in products %}
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{p.product_name}}</td>
+        <td>{{p.product_rate}}</td>
+        <td>{{p.product_details}}</td>
+        <td>{{p.product_category}}</td>
+        <td>{{p.product_stoke}}</td>
+        <td><button><a href="{% url 'product_delete' product_id=p.id %}">DELETE</a></button></td>
+        <td><button><a href="{% url 'product' product_id=p.id %}">EDIT</a></button></td>
       </tr>
+      {% endfor %}
      
     </tbody>
   </table>

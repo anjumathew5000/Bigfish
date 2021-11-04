@@ -1,7 +1,35 @@
 {% extends 'index.html' %}
 {% block contents %}
+{% if products %}
+<form action="{% url 'product_edit' product_id=products.id %}"  method="POST" role="form" >
+    {% csrf_token %}
+    <div class="form-group">
+        
+    <label>product Name</label>
+    <input type="text" name='pname' value="{{products.product_name}}" class="form-control">
+    <label>product rate</label>
+    <input type="number" name='prate' value="{{products.product_rate}}" class="form-control">
+    <label>product category</label>
+    <select class="form-control" name="productcat" value="{{products.product_category}}">
+        <option value="{{products.product_category}}">{{products.product_category}}</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+    </select>
+    
+    <label>product Details</label>
+   <textarea class="form-control" name="pdetail" >
+    {{products.product_details}}
+   </textarea>
+   <label>product stock</label>
+    <input type="number" name='pstock' value="{{products.product_stoke}}" class="form-control">
+   <button type="submit" class="btn btn-primary" style="float:right;">submit</button>
+  
+    </div>
+</form>
+{% else %}
 
-<form>
+<form action="{% url 'product' %}"  method="POST" role="form" >
+    {% csrf_token %}
     <div class="form-group">
     <label>product Name</label>
     <input type="text" name='pname' class="form-control">
@@ -14,13 +42,14 @@
     </select>
     
     <label>product Details</label>
-   <textarea class="form-control">
+   <textarea class="form-control" name="pdetail">
 
    </textarea>
    <label>product stock</label>
     <input type="number" name='pstock' class="form-control">
-   <button type="button" class="btn btn-primary" style="float:right;">submit</button>
+   <button type="submit" class="btn btn-primary" style="float:right;">submit</button>
   
     </div>
 </form>
+{% endif %}
 {% endblock %}
